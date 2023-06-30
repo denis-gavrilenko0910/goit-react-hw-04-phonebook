@@ -28,7 +28,6 @@ const StyledDeleteBtn = styled.button`
 `;
 
 export const ContactsList = ({ contacts, onDeleteContact }) => {
-  // console.log(contacts);
   return (
     <StyledContactsList>
       {contacts?.map(({ id, name, number }) => {
@@ -52,12 +51,12 @@ export const ContactsList = ({ contacts, onDeleteContact }) => {
 };
 
 ContactsList.propTypes = {
-  // contacts: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     id: PropTypes.string.isRequired,
-  //     name: PropTypes.string.isRequired,
-  //     number: PropTypes.string.isRequired,
-  //   })
-  // ),
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
   onDeleteContact: PropTypes.func.isRequired,
 };

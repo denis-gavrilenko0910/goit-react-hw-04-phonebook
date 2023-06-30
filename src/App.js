@@ -11,15 +11,17 @@ const StyledWrapper = styled.div``;
 
 export const App = () => {
   const [filter, setFilter] = useState('');
-  const [contacts, setContact] = useState([]);
+  const [contacts, setContact] = useState(() => {
+    return JSON.parse(localStorage.getItem('contacts')) ?? [];
+  });
 
-  const onSubmitHandler = data => {
-    const checkIdentity = data.toLowerCase();
-    if (contacts.find(el => el.toLowerCase() === checkIdentity)) {
+  const onSubmitHandler = (name, number) => {
+    const checkIdentity = name.toLowerCase();
+    if (contacts.find(el => el.name.toLowerCase() === checkIdentity)) {
       return alert('the contact is already exists!');
     }
 
-    setContact(prevState => [nanoid(), ...data, ...prevState]);
+    setContact(prevState => [{ id: nanoid(), name, number }, ...prevState]);
   };
 
   const handleFilterName = e => {
@@ -27,27 +29,17 @@ export const App = () => {
   };
 
   const deleteContact = id => {
-    setContact(prevState => prevState.contacts.filter(el => el.id !== id));
+    setContact(prevState => prevState.filter(el => el.id !== id));
   };
-
-  useEffect(() => {
-    const storedContacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(storedContacts);
-    // console.log(parsedContacts);
-    if (parsedContacts) {
-      setContact(parsedContacts);
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
   const setFilteredContacts = () => {
-    // console.log(contacts);
+    console.log(contacts);
     return contacts.filter(contact => {
-      // console.log(contact);
-      return contact.toLowerCase().includes(filter.toLowerCase());
+      return contact.name.toLowerCase().includes(filter.toLowerCase());
     });
   };
 
