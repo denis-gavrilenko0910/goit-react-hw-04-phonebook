@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
-import { AddContactBtn } from './AddContactBtn';
+import { AddContactBtn } from '../AddContactBtn/AddContactBtn';
 
 const StyledForm = styled.form`
   display: flex;

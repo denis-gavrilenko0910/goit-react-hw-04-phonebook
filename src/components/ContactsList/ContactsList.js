@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { ContactsItem } from './ContactsItem';
+import { ContactsItem } from '../ContactsItem/ContactsItem';
 
 const StyledContactsList = styled.ul`
   padding: 0;

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Filter } from './components/Filter';
-import { ContactForm } from './components/ContactForm';
-import { Section } from './components/Section';
-import { ContactsList } from './components/ContactsList';
+import { Filter } from './components/Filter/Filter';
+import { ContactForm } from './components/ContactForm/ContactForm';
+import { Section } from './components/Section/Section';
+import { ContactsList } from './components/ContactsList/ContactsList';
 import { nanoid } from 'nanoid';
-import { Container } from './components/Container';
+import { Container } from './components/Container/Container';
 import { styled } from 'styled-components';
 
 const StyledWrapper = styled.div``;
